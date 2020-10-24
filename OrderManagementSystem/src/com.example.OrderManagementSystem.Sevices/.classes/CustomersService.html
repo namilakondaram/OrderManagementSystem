@@ -1,0 +1,157 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CustomersService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.OrderManagementSystem.Sevices</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CustomersService (com.example.OrderManagementSystem.Sevices)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomersService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/ 19)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CustomersService$MockitoMock$900207061</td>
+  </tr>
+  <tr>
+    <td class="name">CustomersService$MockitoMock$900207061$auxiliary$2n7gDkiJ</td>
+  </tr>
+  <tr>
+    <td class="name">CustomersService$MockitoMock$900207061$auxiliary$3j1TPiLi</td>
+  </tr>
+  <tr>
+    <td class="name">CustomersService$MockitoMock$900207061$auxiliary$HryT47Tu</td>
+  </tr>
+  <tr>
+    <td class="name">CustomersService$MockitoMock$900207061$auxiliary$TsXvV8iu</td>
+  </tr>
+  <tr>
+    <td class="name">CustomersService$MockitoMock$900207061$auxiliary$VB7UjQOj</td>
+  </tr>
+  <tr>
+    <td class="name">CustomersService$MockitoMock$900207061$auxiliary$WWPrMG1p</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/ 19)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.OrderManagementSystem.Sevices;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.OrderManagementSystem.Entities.Customers;
+<i>4</i>&nbsp;import com.example.OrderManagementSystem.Repositories.CustomersRepository;
+<i>5</i>&nbsp;import lombok.extern.slf4j.Slf4j;
+<i>6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>7</i>&nbsp;import org.springframework.stereotype.Service;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;@Service
+<b class="fc"><i>10</i>&nbsp;@Slf4j</b>
+<b class="fc"><i>11</i>&nbsp;public class CustomersService {</b>
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    @Autowired
+<i>14</i>&nbsp;    CustomersRepository customersRepository;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    public boolean loginToSystem(String id, String password) {
+<b class="fc"><i>17</i>&nbsp;        if(customersRepository.existsById(id)) {</b>
+<b class="fc"><i>18</i>&nbsp;            Customers customer = customersRepository.getOne(id);</b>
+<b class="fc"><i>19</i>&nbsp;            if(customer.getCustomerPassword().equals(password)) return true;</b>
+<b class="fc"><i>20</i>&nbsp;            log.info(&quot;The customer with id: &quot;+id+&quot; password entered is not correct&quot;);</b>
+<i>21</i>&nbsp;        }
+<b class="fc"><i>22</i>&nbsp;        log.info(&quot;Customer with id: &quot;+id+&quot; does not exist&quot;);</b>
+<b class="fc"><i>23</i>&nbsp;        return false;</b>
+<i>24</i>&nbsp;    }
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    public Customers getCustomerById(String id) {
+<b class="fc"><i>28</i>&nbsp;        return customersRepository.findById(id).get();</b>
+<i>29</i>&nbsp;    }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    public float deductMoneyFromWallet(String id, float price) {
+<b class="fc"><i>32</i>&nbsp;        Customers customers = getCustomerById(id);</b>
+<b class="fc"><i>33</i>&nbsp;        float resultantValue = customers.getCustomerWallet()-price;</b>
+<b class="fc"><i>34</i>&nbsp;        customers.setCustomerWallet(resultantValue);</b>
+<b class="fc"><i>35</i>&nbsp;        customersRepository.save(customers);</b>
+<b class="fc"><i>36</i>&nbsp;        return resultantValue;</b>
+<i>37</i>&nbsp;    }
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    public float addMoneyToWallet(String id,float price) {
+<b class="fc"><i>40</i>&nbsp;        Customers customers = getCustomerById(id);</b>
+<b class="fc"><i>41</i>&nbsp;        float resultantValue = customers.getCustomerWallet() + price;</b>
+<b class="fc"><i>42</i>&nbsp;        customers.setCustomerWallet(resultantValue);</b>
+<b class="fc"><i>43</i>&nbsp;        customersRepository.save(customers);</b>
+<b class="fc"><i>44</i>&nbsp;        return resultantValue;</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-10-24 16:06</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SellersController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.OrderManagementSystem.Controllers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SellersController (com.example.OrderManagementSystem.Controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SellersController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.OrderManagementSystem.Controllers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.OrderManagementSystem.Entities.Sellers;
+<i>4</i>&nbsp;import com.example.OrderManagementSystem.Sevices.SellersService;
+<i>5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>6</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.util.List;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;@CrossOrigin
+<i>11</i>&nbsp;@RestController
+<i>12</i>&nbsp;@RequestMapping(&quot;/&quot;)
+<b class="fc"><i>13</i>&nbsp;public class SellersController {</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    @Autowired
+<i>16</i>&nbsp;    SellersService sellersService;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    @GetMapping(&quot;/seller/login/{id}/{password}&quot;)
+<i>19</i>&nbsp;    public boolean login(@PathVariable(&quot;id&quot;) String id, @PathVariable(&quot;password&quot;) String password) {
+<b class="fc"><i>20</i>&nbsp;        return sellersService.loginToSystem(id,password);</b>
+<i>21</i>&nbsp;    }
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    @GetMapping(&quot;/seller/getSellers&quot;)
+<i>24</i>&nbsp;    public List&lt;Sellers&gt; getSellers() {
+<b class="fc"><i>25</i>&nbsp;       return sellersService.getAllSellers();</b>
+<i>26</i>&nbsp;    }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    @GetMapping(&quot;/seller/{id}&quot;)
+<i>29</i>&nbsp;    public Sellers getSeller(@PathVariable(&quot;id&quot;) String id) {
+<b class="fc"><i>30</i>&nbsp;        return sellersService.getSeller(id);</b>
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-10-24 16:06</div>
+</div>
+</body>
+</html>

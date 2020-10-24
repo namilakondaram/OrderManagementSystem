@@ -1,0 +1,137 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ItemsService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.OrderManagementSystem.Sevices</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ItemsService (com.example.OrderManagementSystem.Sevices)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ItemsService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ItemsService$MockitoMock$1864721816</td>
+  </tr>
+  <tr>
+    <td class="name">ItemsService$MockitoMock$1864721816$auxiliary$cX3bik9w</td>
+  </tr>
+  <tr>
+    <td class="name">ItemsService$MockitoMock$1864721816$auxiliary$e1yBx6sA</td>
+  </tr>
+  <tr>
+    <td class="name">ItemsService$MockitoMock$1864721816$auxiliary$IPGKmSu9</td>
+  </tr>
+  <tr>
+    <td class="name">ItemsService$MockitoMock$1864721816$auxiliary$U38puCY3</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.OrderManagementSystem.Sevices;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.OrderManagementSystem.Entities.Items;
+<i>4</i>&nbsp;import com.example.OrderManagementSystem.Repositories.ItemsRepository;
+<i>5</i>&nbsp;import lombok.extern.slf4j.Slf4j;
+<i>6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>7</i>&nbsp;import org.springframework.stereotype.Service;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.util.ArrayList;
+<i>10</i>&nbsp;import java.util.List;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;@Service
+<b class="fc"><i>13</i>&nbsp;@Slf4j</b>
+<b class="fc"><i>14</i>&nbsp;public class ItemsService {</b>
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    @Autowired
+<i>17</i>&nbsp;    ItemsRepository itemsRepository;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    public List&lt;Items&gt; getAllItems() {
+<b class="fc"><i>20</i>&nbsp;        List&lt;Items&gt; allItems = itemsRepository.findAll();</b>
+<b class="fc"><i>21</i>&nbsp;        List&lt;Items&gt; validItems = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>22</i>&nbsp;        for(Items item: allItems) {</b>
+<b class="fc"><i>23</i>&nbsp;            if(item.getItemId().equals(&quot;0&quot;) == false)</b>
+<b class="fc"><i>24</i>&nbsp;            validItems.add(item);</b>
+<b class="fc"><i>25</i>&nbsp;        }</b>
+<b class="fc"><i>26</i>&nbsp;        return validItems;</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public Items getItem(String id) {
+<b class="fc"><i>30</i>&nbsp;        return itemsRepository.findById(id).get();</b>
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-10-24 16:06</div>
+</div>
+</body>
+</html>
